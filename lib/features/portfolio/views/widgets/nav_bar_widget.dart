@@ -1,15 +1,39 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/themes/app_colors.dart';
-import 'package:portfolio/features/portfolio/models/nav_bar_tab_model.dart';
+import 'package:portfolio/features/portfolio/views/widgets/tag_button_widget.dart';
 
-class NavBarWidget extends StatelessWidget {
-  const NavBarWidget({super.key});
+class NavBarWidget extends StatefulWidget {
+  final GlobalKey<State<StatefulWidget>> homeKey;
+  final GlobalKey<State<StatefulWidget>> aboutKey;
+  final GlobalKey<State<StatefulWidget>> skillsKey;
+  const NavBarWidget({
+    super.key,
+    required this.homeKey,
+    required this.aboutKey,
+    required this.skillsKey,
+  });
+
+  @override
+  State<NavBarWidget> createState() => _NavBarWidgetState();
+}
+
+class _NavBarWidgetState extends State<NavBarWidget> {
+  void scrollToSection(GlobalKey key) {
+    Scrollable.ensureVisible(
+      key.currentContext!,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  bool isHovered = false;
+  GlobalKey<State<StatefulWidget>> currentKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -19,7 +43,7 @@ class NavBarWidget extends StatelessWidget {
               width: 35,
               height: 35,
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
+                color: colorScheme.primary,
                 borderRadius: BorderRadius.circular(size.width * 0.05),
               ),
               child: LayoutBuilder(
@@ -31,7 +55,7 @@ class NavBarWidget extends StatelessWidget {
                           .copyWith(
                             fontSize: constraints.maxHeight * 0.4,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.white,
+                            color: colorScheme.onPrimary,
                           ),
                     ),
                   );
@@ -44,7 +68,7 @@ class NavBarWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: AppColors.black,
+                color: colorScheme.onSecondary,
               ),
             ),
           ],
@@ -63,12 +87,50 @@ class NavBarWidget extends StatelessWidget {
                     constraints: BoxConstraints(minWidth: constraints.maxWidth),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: navBarTabsList.map((tab) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(tab.name),
-                        );
-                      }).toList(),
+                      children: [
+                        TagButtonWidget(
+                          tagName: "Home",
+                          selectedKey: widget.homeKey,
+                          onTap: () => scrollToSection(widget.homeKey),
+                          onEnter: (_) => setState(() {
+                            isHovered = true;
+                            currentKey = widget.homeKey;
+                          }),
+                          onExit: (_) => setState(() => isHovered = false),
+                          isHovered: isHovered && currentKey == widget.homeKey,
+                        ),
+                        TagButtonWidget(
+                          tagName: "About",
+                          selectedKey: widget.aboutKey,
+                          onTap: () => scrollToSection(widget.aboutKey),
+                          onEnter: (_) => setState(() {
+                            isHovered = true;
+                            currentKey = widget.aboutKey;
+                          }),
+                          onExit: (_) => setState(() => isHovered = false),
+                          isHovered: isHovered && currentKey == widget.aboutKey,
+                        ),
+                        TagButtonWidget(
+                          tagName: "Skills",
+                          selectedKey: widget.skillsKey,
+                          onTap: () => scrollToSection(widget.skillsKey),
+                          onEnter: (_) => setState(() {
+                            isHovered = true;
+                            currentKey = widget.skillsKey;
+                          }),
+                          onExit: (_) => setState(() => isHovered = false),
+                          isHovered:
+                              isHovered && currentKey == widget.skillsKey,
+                        ),
+                        // TextButton(
+                        //   onPressed: () => scrollToSection(aboutKey),
+                        //   child: Text("Projects"),
+                        // ),
+                        // TextButton(
+                        //   onPressed: () => scrollToSection(homeKey),
+                        //   child: Text("Contact"),
+                        // ),
+                      ],
                     ),
                   ),
                 );
