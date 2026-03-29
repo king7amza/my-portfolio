@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/app_constents.dart';
+import 'package:portfolio/core/themes/app_themes.dart';
 import 'package:portfolio/features/portfolio/views/pages/portfolio_page.dart';
-import 'package:portfolio/features/portfolio/views/pages/portfolio_stack.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   /*
-  home
-  about
-  education
+  home done
+  about done
+  skills done
   projects
   contact
-  skills
   */
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppConstents.appName,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const PrtfolioStack(),
+      theme: AppThemes.lightTheme,
+      home: const PortfolioPage(),
     );
   }
 }
