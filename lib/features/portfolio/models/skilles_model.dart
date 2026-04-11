@@ -54,7 +54,7 @@ List<SkillesModel> skillsList = [
     imagePath1: "assets/images/database_icon.png",
   ),
   SkillesModel(
-    title: "Data Structures and Algorithms",
+    title: "DSA",
     description:
         "Data structures and algorithms for efficient problem-solving.",
     imagePath1: "assets/images/dsa_icon.png",

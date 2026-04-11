@@ -23,24 +23,21 @@ class SkillesSectionWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        SizedBox(
-          height: 1500,
-          width: size.width * 0.82,
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 300,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              childAspectRatio: 1/1.2,
-            ),
-            itemCount: skillsList.length,
-            itemBuilder: (context, index) {
-              final skill = skillsList[index];
-              return SkillCardWidget(skill: skill);
-            },
+        GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 300,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: 1 / 1.3,
           ),
+          itemCount: skillsList.length,
+          itemBuilder: (context, index) {
+            final skill = skillsList[index];
+            return SkillCardWidget(skill: skill);
+          },
         ),
       ],
     );
