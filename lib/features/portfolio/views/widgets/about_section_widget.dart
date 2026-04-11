@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/themes/app_colors.dart';
+import 'package:portfolio/features/portfolio/views/widgets/contact_actions_widget.dart';
 
 class AboutSectionWidget extends StatelessWidget {
   final GlobalKey<State<StatefulWidget>> aboutKey;
@@ -159,79 +160,21 @@ class AboutSectionWidget extends StatelessWidget {
                                           ),
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        width: constraints.maxWidth * 0.25,
-                                        height: constraints.maxHeight * 0.13,
-                                        decoration: BoxDecoration(
-                                          color: colorScheme.primary,
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "Get In Touch",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                  fontSize:
-                                                      constraints.maxHeight *
-                                                      0.05,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: colorScheme.onPrimary,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Container(
-                                        width: constraints.maxWidth * 0.25,
-                                        height: constraints.maxHeight * 0.13,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: colorScheme.primary,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "Download CV",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headlineSmall!
-                                                    .copyWith(
-                                                      fontSize:
-                                                          constraints
-                                                              .maxHeight *
-                                                          0.05,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color:
-                                                          colorScheme.primary,
-                                                    ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              Icon(
-                                                Icons.download_outlined,
-                                                color: colorScheme.primary,
-                                                size:
-                                                    constraints.maxHeight *
-                                                    0.05,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                  ContactActionsWidget(
+                                    contactAction1Height:
+                                        constraints.maxHeight * 0.13,
+                                    contactAction1Width:
+                                        constraints.maxWidth * 0.25,
+                                    contactAction1FontSize:
+                                        constraints.maxHeight * 0.05,
+                                    contactAction2Height:
+                                        constraints.maxHeight * 0.13,
+                                    contactAction2Width:
+                                        constraints.maxWidth * 0.25,
+                                    contactAction2FontSize:
+                                        constraints.maxHeight * 0.05,
+                                    contactAction2IconSize:
+                                        constraints.maxHeight * 0.05,
                                   ),
                                 ],
                               ),
@@ -392,81 +335,21 @@ class AboutSectionWidget extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 20),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                        width: constraints.maxWidth * 0.25,
-                                        height: constraints.maxHeight * 0.07,
-                                        decoration: BoxDecoration(
-                                          color: colorScheme.primary,
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "Get In Touch",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                  fontSize:
-                                                      constraints.maxHeight *
-                                                      0.017,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: colorScheme.onPrimary,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Container(
-                                        width: constraints.maxWidth * 0.29,
-                                        height: constraints.maxHeight * 0.07,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: colorScheme.primary,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            5,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "Download CV",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headlineSmall!
-                                                    .copyWith(
-                                                      fontSize:
-                                                          constraints
-                                                              .maxHeight *
-                                                          0.017,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color:
-                                                          colorScheme.primary,
-                                                    ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              Icon(
-                                                Icons.download_outlined,
-                                                color: colorScheme.primary,
-                                                size:
-                                                    constraints.maxHeight *
-                                                    0.024,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                  ContactActionsWidget(
+                                    contactAction1Height:
+                                        constraints.maxHeight * 0.07,
+                                    contactAction1Width:
+                                        constraints.maxWidth * 0.25,
+                                    contactAction1FontSize:
+                                        constraints.maxHeight * 0.017,
+                                    contactAction2Height:
+                                        constraints.maxHeight * 0.07,
+                                    contactAction2Width:
+                                        constraints.maxWidth * 0.29,
+                                    contactAction2FontSize:
+                                        constraints.maxHeight * 0.017,
+                                    contactAction2IconSize:
+                                        constraints.maxHeight * 0.024,
                                   ),
                                 ],
                               ),

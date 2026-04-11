@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   home done
   about done
   skills done
+  download cv
   projects
   contact
   */

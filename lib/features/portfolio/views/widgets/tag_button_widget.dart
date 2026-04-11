@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 class TagButtonWidget extends StatelessWidget {
   final String tagName;
   final GlobalKey selectedKey;
+  final GlobalKey hoverdKey;
   final void Function() onTap;
   final PointerEnterEventListener? onEnter;
   final PointerExitEventListener? onExit;
   final bool isHovered;
+  final bool isSelected;
   const TagButtonWidget({
     super.key,
     required this.tagName,
@@ -16,6 +18,8 @@ class TagButtonWidget extends StatelessWidget {
     this.onEnter,
     this.onExit,
     required this.isHovered,
+    required this.isSelected,
+    required this.hoverdKey,
   });
 
   @override
@@ -35,7 +39,7 @@ class TagButtonWidget extends StatelessWidget {
           duration: Duration(milliseconds: 200),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: isHovered
+            color: isHovered || isSelected
                 ? colorScheme.primary
                 : colorScheme.surfaceContainerLowest,
           ),
@@ -46,7 +50,7 @@ class TagButtonWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
-                color: isHovered
+                color: isHovered || isSelected
                     ? colorScheme.onPrimary
                     : colorScheme.onSecondary,
               ),
