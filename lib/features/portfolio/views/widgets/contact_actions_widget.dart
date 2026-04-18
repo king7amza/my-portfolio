@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:portfolio/features/portfolio/services/adupter_palteforms_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContactActionsWidget extends StatelessWidget {
+class ContactActionsWidget extends StatefulWidget {
   final double contactAction1Height;
   final double contactAction1Width;
   final double contactAction1FontSize;
@@ -9,7 +11,8 @@ class ContactActionsWidget extends StatelessWidget {
   final double contactAction2Width;
   final double contactAction2FontSize;
   final double contactAction2IconSize;
-
+  final Function(GlobalKey) scrollToSection;
+  final GlobalKey<State<StatefulWidget>> navigatorKey;
   const ContactActionsWidget({
     super.key,
     required this.contactAction1Height,
@@ -19,7 +22,42 @@ class ContactActionsWidget extends StatelessWidget {
     required this.contactAction2Width,
     required this.contactAction2FontSize,
     required this.contactAction2IconSize,
+    required this.scrollToSection,
+    required this.navigatorKey,
   });
+
+  @override
+  State<ContactActionsWidget> createState() => _ContactActionsWidgetState();
+}
+
+class _ContactActionsWidgetState extends State<ContactActionsWidget> {
+  bool isCVHovered = false;
+  bool isGetInTouchHovered = false;
+
+  void onExitCV(PointerExitEvent event) {
+    setState(() {
+      isCVHovered = false;
+    });
+  }
+
+  void onEnterCV(PointerEnterEvent event) {
+    setState(() {
+      isCVHovered = true;
+    });
+  }
+
+  void onExitGetInTouch(PointerExitEvent event) {
+    setState(() {
+      isGetInTouchHovered = false;
+    });
+  }
+
+  void onEnterGetInTouch(PointerEnterEvent event) {
+    setState(() {
+      isGetInTouchHovered = true;
+    });
+  }
+
   Future<void> _launchCV() async {
     final Uri cvUrl = Uri.parse(
       'https://drive.google.com/uc?export=download&id=1sXHnAcuG8iUzcF0vMmXHxrRjt5y6tHHd',
@@ -40,55 +78,87 @@ class ContactActionsWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Container(
-          width: contactAction1Width,
-          height: contactAction1Height,
-          decoration: BoxDecoration(
-            color: colorScheme.primary,
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Center(
-            child: Text(
-              "Get In Touch",
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                fontSize: contactAction1FontSize,
-                fontWeight: FontWeight.w600,
-                color: colorScheme.onPrimary,
+        MouseRegion(
+          onEnter: onEnterGetInTouch,
+          onExit: onExitGetInTouch,
+          child: InkWell(
+            onTap: () {
+              widget.scrollToSection(widget.navigatorKey);
+            },
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              width: widget.contactAction1Width,
+              height: widget.contactAction1Height,
+              decoration: BoxDecoration(
+                color: AdupterPalteformsServices.isMobile()
+                    ? (colorScheme.primary)
+                    : (isGetInTouchHovered
+                          ? colorScheme.primary
+                          : colorScheme.onPrimary),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: colorScheme.primary),
+              ),
+              child: Center(
+                child: Text(
+                  "Get In Touch",
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontSize: widget.contactAction1FontSize,
+                    fontWeight: FontWeight.w600,
+                    color: AdupterPalteformsServices.isMobile()
+                        ? (colorScheme.onPrimary)
+                        : (isGetInTouchHovered
+                              ? colorScheme.onPrimary
+                              : colorScheme.primary),
+                  ),
+                ),
               ),
             ),
           ),
         ),
         const SizedBox(width: 10),
-        InkWell(
-          onTap: () async {
-            await _launchCV();
-          },
-          child: Container(
-            width: contactAction2Width,
-            height: contactAction2Height,
-            decoration: BoxDecoration(
-              border: Border.all(color: colorScheme.primary),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Download CV",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: contactAction2FontSize,
-                      fontWeight: FontWeight.w600,
-                      color: colorScheme.primary,
+        MouseRegion(
+          onEnter: onEnterCV,
+          onExit: onExitCV,
+          child: InkWell(
+            onTap: () async {
+              await _launchCV();
+            },
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              width: widget.contactAction2Width,
+              height: widget.contactAction2Height,
+              decoration: BoxDecoration(
+                color: isCVHovered
+                    ? colorScheme.primary
+                    : colorScheme.onPrimary,
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: colorScheme.primary),
+              ),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Download CV",
+                      style: Theme.of(context).textTheme.headlineSmall!
+                          .copyWith(
+                            fontSize: widget.contactAction2FontSize,
+                            fontWeight: FontWeight.w600,
+                            color: isCVHovered
+                                ? colorScheme.onPrimary
+                                : colorScheme.primary,
+                          ),
                     ),
-                  ),
-                  const SizedBox(width: 5),
-                  Icon(
-                    Icons.download_outlined,
-                    color: colorScheme.primary,
-                    size: contactAction2IconSize,
-                  ),
-                ],
+                    const SizedBox(width: 5),
+                    Icon(
+                      Icons.download_outlined,
+                      color: isCVHovered
+                          ? colorScheme.onPrimary
+                          : colorScheme.primary,
+                      size: widget.contactAction2IconSize,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
