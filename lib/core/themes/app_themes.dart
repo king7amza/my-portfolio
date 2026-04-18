@@ -15,6 +15,10 @@ class AppThemes {
       tertiary: AppColors.greenShadow,
       surfaceContainerHighest: AppColors.lightGrey1,
       surfaceContainerLowest: AppColors.transparent,
+      outline: AppColors.footerColor,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: UnderlineInputBorder(),
     ),
   );
 }
