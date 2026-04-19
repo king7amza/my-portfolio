@@ -21,4 +21,23 @@ class AppThemes {
       border: UnderlineInputBorder(),
     ),
   );
+  static ThemeData get darkTheme => ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primaryColor,
+      primary: AppColors.primaryColor,
+      onPrimary: AppColors.black,
+      secondary: AppColors.lightGrey1,
+      onSecondary: AppColors.white,
+      surface: AppColors.darkBackgroundColor,
+      shadow: AppColors.blackShadow,
+      tertiary: AppColors.blueShadow,
+      surfaceContainerHighest: AppColors.grey,
+      surfaceContainerLowest: AppColors.transparent,
+      outline: AppColors.footerColor,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: UnderlineInputBorder(),
+    ),
+  );
 }

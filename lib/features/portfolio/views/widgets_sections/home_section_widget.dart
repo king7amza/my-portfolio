@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio/features/portfolio/services/adupter_palteforms_services.dart';
 
 class HomeSectionWidget extends StatefulWidget {
   final GlobalKey<State<StatefulWidget>> homeKey;
@@ -113,7 +112,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
                     height: 40,
                     duration: const Duration(milliseconds: 200),
                     decoration: BoxDecoration(
-                      color: AdupterPalteformsServices.isMobile()
+                      color: size.width < 600
                           ? (colorScheme.primary)
                           : (isProjectsHovered
                                 ? colorScheme.primary
@@ -131,7 +130,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
                                 .copyWith(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
-                                  color: AdupterPalteformsServices.isMobile()
+                                  color: size.width < 600
                                       ? (colorScheme.onPrimary)
                                       : (isProjectsHovered
                                             ? colorScheme.onPrimary
@@ -141,7 +140,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
                           const SizedBox(width: 5),
                           Icon(
                             Icons.arrow_circle_right_outlined,
-                            color: AdupterPalteformsServices.isMobile()
+                            color: size.width < 600
                                 ? (colorScheme.onPrimary)
                                 : (isProjectsHovered
                                       ? colorScheme.onPrimary

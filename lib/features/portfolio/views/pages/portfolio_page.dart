@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/themes/app_colors.dart';
+import 'package:portfolio/features/portfolio/views/widgets/toggle_mode_button_widget.dart';
 import 'package:portfolio/features/portfolio/views/widgets_sections/about_section_widget.dart';
 import 'package:portfolio/features/portfolio/views/widgets_sections/contact_section_widget.dart';
 import 'package:portfolio/features/portfolio/views/widgets_sections/footer_section_widget.dart';
@@ -88,13 +89,14 @@ class _PortfolioPageState extends State<PortfolioPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     const double designWidth = 360;
     const double designHeight = 800;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       calculateOffsets();
     });
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: colorScheme.surface,
       body: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -120,8 +122,12 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     top: size.height * 0.028,
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const SizedBox(height: 100),
+                      // dark mode toggle
+                      const SizedBox(height: 70),
+                      const ToggleModeButtonWidget(),
+                      const SizedBox(height: 10),
                       // home section
                       HomeSectionWidget(
                         homeKey: keysList[0],
@@ -149,7 +155,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   clipBehavior: Clip.none,
                   children: [
                     Positioned(
-                      bottom: -170,
+                      bottom: -190,
                       right: 0,
                       left: 0,
                       child: FooterSectionWidget(),
@@ -164,7 +170,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 170),
+                const SizedBox(height: 190),
               ],
             ),
           ),

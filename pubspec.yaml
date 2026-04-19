@@ -12,6 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  lottie: ^3.3.3
   url_launcher: ^6.3.2
 
 dev_dependencies:
@@ -24,3 +26,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/lottie/

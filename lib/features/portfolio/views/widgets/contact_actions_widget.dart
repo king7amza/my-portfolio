@@ -75,6 +75,7 @@ class _ContactActionsWidgetState extends State<ContactActionsWidget> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final Size size = MediaQuery.sizeOf(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -90,7 +91,7 @@ class _ContactActionsWidgetState extends State<ContactActionsWidget> {
               width: widget.contactAction1Width,
               height: widget.contactAction1Height,
               decoration: BoxDecoration(
-                color: AdupterPalteformsServices.isMobile()
+                color: size.width < 600
                     ? (colorScheme.primary)
                     : (isGetInTouchHovered
                           ? colorScheme.primary
@@ -104,7 +105,7 @@ class _ContactActionsWidgetState extends State<ContactActionsWidget> {
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     fontSize: widget.contactAction1FontSize,
                     fontWeight: FontWeight.w600,
-                    color: AdupterPalteformsServices.isMobile()
+                    color: size.width < 600
                         ? (colorScheme.onPrimary)
                         : (isGetInTouchHovered
                               ? colorScheme.onPrimary
