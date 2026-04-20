@@ -85,8 +85,7 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                         child: InkWell(
                           onTap: () async {
                             final Uri url = Uri.parse(
-                              // widget.project.projectUrl,
-                              "assets/images/ecommerce_thumbnail.png",
+                              widget.project.projectUrl,
                             );
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);

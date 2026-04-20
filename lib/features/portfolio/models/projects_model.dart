@@ -17,7 +17,7 @@ List<ProjectsModel> projectsList = [
     title: "Clothing E-commerce",
     description:
         "A Flutter-based clothing e-commerce app with features like product browsing, shopping cart, and checkout.",
-    imageUrl: "assets/images/ecommerce_thumbnail.png",
+    imageUrl: "assets/images/ecommerce_project_image.png",
     projectUrl: "https://github.com/king7amza/clothing-ecommerce",
   ),
 ];
