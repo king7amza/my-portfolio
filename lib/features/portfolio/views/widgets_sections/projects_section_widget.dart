@@ -31,7 +31,9 @@ class ProjectsSectionWidget extends StatelessWidget {
             scrollDirection: Axis.vertical,
             itemCount: projectsList.length,
             padding: EdgeInsets.symmetric(
-              horizontal: size.width * 0.1,
+              horizontal: size.width > 600
+                  ? size.width * 0.1
+                  : size.width * 0.05,
               vertical: 20,
             ),
             itemBuilder: (context, index) {
