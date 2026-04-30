@@ -10,6 +10,10 @@ void main() async {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
-  await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    print("Warning: .env file not found locally.");
+  }
   runApp(const MyApp());
 }

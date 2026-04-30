@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:portfolio/core/app_constents.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -47,10 +47,26 @@ class ContactServicesImpl implements ContactServices {
     final url = Uri.parse(
       AppConstents.emailJsBaseUrl + AppConstents.emailJsEndpoint,
     );
-    final String serviceId = dotenv.env['SERVICE_ID'] ?? '';
-    final String templateId = dotenv.env['CONTACT_US_TEMPLATE_ID'] ?? '';
-    final String userId = dotenv.env['PUBLIC_KEY'] ?? '';
-    final String accessToken = dotenv.env['PRIVATE_KEY'] ?? '';
+    // final String serviceId = dotenv.env['SERVICE_ID'] ?? '';
+    // final String templateId = dotenv.env['CONTACT_US_TEMPLATE_ID'] ?? '';
+    // final String userId = dotenv.env['PUBLIC_KEY'] ?? '';
+    // final String accessToken = dotenv.env['PRIVATE_KEY'] ?? '';
+    final String serviceId = const String.fromEnvironment(
+      'SERVICE_ID',
+      defaultValue: '',
+    );
+    final String templateId = const String.fromEnvironment(
+      'CONTACT_US_TEMPLATE_ID',
+      defaultValue: '',
+    );
+    final String userId = const String.fromEnvironment(
+      'PUBLIC_KEY',
+      defaultValue: '',
+    );
+    final String accessToken = const String.fromEnvironment(
+      'PRIVATE_KEY',
+      defaultValue: '',
+    );
     try {
       final response = await http
           .post(
@@ -85,10 +101,26 @@ class ContactServicesImpl implements ContactServices {
     required String subject,
   }) async {
     try {
-      final String serviceId = dotenv.env['SERVICE_ID'] ?? '';
-      final String templateId = dotenv.env['AUTO_REPLY_TEMPLATE_ID'] ?? '';
-      final String userId = dotenv.env['PUBLIC_KEY'] ?? '';
-      final String accessToken = dotenv.env['PRIVATE_KEY'] ?? '';
+      // final String serviceId = dotenv.env['SERVICE_ID'] ?? '';
+      // final String templateId = dotenv.env['AUTO_REPLY_TEMPLATE_ID'] ?? '';
+      // final String userId = dotenv.env['PUBLIC_KEY'] ?? '';
+      // final String accessToken = dotenv.env['PRIVATE_KEY'] ?? '';
+      final String serviceId = const String.fromEnvironment(
+        'SERVICE_ID',
+        defaultValue: '',
+      );
+      final String templateId = const String.fromEnvironment(
+        'AUTO_REPLY_TEMPLATE_ID',
+        defaultValue: '',
+      );
+      final String userId = const String.fromEnvironment(
+        'PUBLIC_KEY',
+        defaultValue: '',
+      );
+      final String accessToken = const String.fromEnvironment(
+        'PRIVATE_KEY',
+        defaultValue: '',
+      );
       final url = Uri.parse(
         AppConstents.emailJsBaseUrl + AppConstents.emailJsEndpoint,
       );
@@ -128,8 +160,16 @@ class ContactServicesImpl implements ContactServices {
     required String budget,
   }) async {
     try {
-      final String botToken = dotenv.env['TELEGRAM_BOT_TOKEN'] ?? '';
-      final String chatId = dotenv.env['TELEGRAM_CHAT_ID'] ?? '';
+      // final String botToken = dotenv.env['TELEGRAM_BOT_TOKEN'] ?? '';
+      // final String chatId = dotenv.env['TELEGRAM_CHAT_ID'] ?? '';
+      final String botToken = const String.fromEnvironment(
+        'TELEGRAM_BOT_TOKEN',
+        defaultValue: '',
+      );
+      final String chatId = const String.fromEnvironment(
+        'TELEGRAM_CHAT_ID',
+        defaultValue: '',
+      );
       final String fullTelegramUrl =
           AppConstents.telegramBaseUrl +
           AppConstents.telegramEndpoint(
