@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SubmitButtonWidget extends StatelessWidget {
-  const SubmitButtonWidget({super.key});
+  final bool? isLoading;
+  const SubmitButtonWidget({super.key, this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +14,28 @@ class SubmitButtonWidget extends StatelessWidget {
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Submit",
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: colorScheme.onPrimary,
-              fontWeight: FontWeight.w600,
+      child: isLoading == true
+          ? Center(
+              child: CircularProgressIndicator(color: colorScheme.onPrimary),
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Submit",
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    color: colorScheme.onPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Icon(
+                  Icons.send_rounded,
+                  color: colorScheme.onPrimary,
+                  size: 20,
+                ),
+              ],
             ),
-          ),
-          const SizedBox(width: 10),
-          Icon(Icons.send_rounded, color: colorScheme.onPrimary, size: 20),
-        ],
-      ),
     );
   }
 }

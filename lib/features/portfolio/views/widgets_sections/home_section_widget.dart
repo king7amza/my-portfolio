@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:portfolio/features/portfolio/views/widgets/toggle_mode_button_widget.dart';
 
 class HomeSectionWidget extends StatefulWidget {
   final GlobalKey<State<StatefulWidget>> homeKey;
@@ -44,6 +45,11 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 70),
+              Align(
+                alignment: Alignment.topRight,
+                child: const ToggleModeButtonWidget()),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -67,7 +73,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
                       ).createShader(bounds);
                     },
                     child: Text(
-                      "Flutter\nDeveloper",
+                      "Mobile\nDeveloper",
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         fontSize: size.width < 600
                             ? /*26 or 30*/ constraints.maxWidth * 0.08

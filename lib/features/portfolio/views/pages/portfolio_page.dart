@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/themes/app_colors.dart';
 import 'package:portfolio/features/portfolio/views/widgets/toggle_mode_button_widget.dart';
 import 'package:portfolio/features/portfolio/views/widgets_sections/about_section_widget.dart';
 import 'package:portfolio/features/portfolio/views/widgets_sections/contact_section_widget.dart';
@@ -124,10 +123,6 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      // dark mode toggle
-                      const SizedBox(height: 70),
-                      const ToggleModeButtonWidget(),
-                      const SizedBox(height: 10),
                       // home section
                       HomeSectionWidget(
                         homeKey: keysList[0],

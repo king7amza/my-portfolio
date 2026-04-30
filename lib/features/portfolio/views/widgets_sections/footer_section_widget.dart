@@ -62,7 +62,7 @@ class FooterSectionWidget extends StatelessWidget {
                                     .copyWith(
                                       fontSize: constraints.maxHeight * 0.4,
                                       fontWeight: FontWeight.bold,
-                                      color: colorScheme.onPrimary,
+                                      color: colorScheme.surfaceBright,
                                     ),
                               ),
                             );
@@ -76,7 +76,7 @@ class FooterSectionWidget extends StatelessWidget {
                             .copyWith(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: colorScheme.onPrimary,
+                              color: colorScheme.surfaceBright,
                             ),
                       ),
                     ],
@@ -87,7 +87,7 @@ class FooterSectionWidget extends StatelessWidget {
                         "made by flutter",
                         style: Theme.of(context).textTheme.labelMedium!
                             .copyWith(
-                              color: colorScheme.onPrimary,
+                              color: colorScheme.surfaceBright,
                               fontWeight: FontWeight.w600,
                             ),
                       ),
