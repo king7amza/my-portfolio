@@ -17,15 +17,7 @@ jobs:
           channel: "stable"
       - name: Install dependencies
         run: flutter pub get
-      - run: flutter build web --release \ --dart-define=TELEGRAM_BOT_TOKEN=${{
-          secrets.TELEGRAM_BOT_TOKEN }} \ --dart-define=TELEGRAM_CHAT_ID=${{
-          secrets.TELEGRAM_CHAT_ID }} \ --dart-define=SERVICE_ID=${{
-          secrets.SERVICE_ID }} \ --dart-define=CONTACT_US_TEMPLATE_ID=${{
-          secrets.CONTACT_US_TEMPLATE_ID }} \
-          --dart-define=AUTO_REPLY_TEMPLATE_ID=${{
-          secrets.AUTO_REPLY_TEMPLATE_ID }} \ --dart-define=PUBLIC_KEY=${{
-          secrets.PUBLIC_KEY }} \ --dart-define=PRIVATE_KEY=${{
-          secrets.PRIVATE_KEY }}
+      - run: flutter build web --release --dart-define=TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }} --dart-define=TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }} --dart-define=SERVICE_ID=${{ secrets.SERVICE_ID }} --dart-define=CONTACT_US_TEMPLATE_ID=${{ secrets.CONTACT_US_TEMPLATE_ID }} --dart-define=AUTO_REPLY_TEMPLATE_ID=${{ secrets.AUTO_REPLY_TEMPLATE_ID }} --dart-define=PUBLIC_KEY=${{ secrets.PUBLIC_KEY }} --dart-define=PRIVATE_KEY=${{ secrets.PRIVATE_KEY }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
