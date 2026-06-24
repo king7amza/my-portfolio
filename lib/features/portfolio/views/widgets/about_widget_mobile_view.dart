@@ -218,7 +218,7 @@ class _AboutWidgetMobileViewState extends State<AboutWidgetMobileView> {
                             SizedBox(
                               width: constraints.maxWidth * 0.9,
                               child: Text(
-                                'i am a flutter developer Loream ipsum dolor\nsit amet consectetur adipiscing elit.\nUt elit tellus luctus nec ullamcorper mattis pulvinar dui. ',
+                                'i am a flutter developer Built apps and tools\nwith Flutter learning each day.\nI create projects apply concepts and improve skills through practice and study',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall!
